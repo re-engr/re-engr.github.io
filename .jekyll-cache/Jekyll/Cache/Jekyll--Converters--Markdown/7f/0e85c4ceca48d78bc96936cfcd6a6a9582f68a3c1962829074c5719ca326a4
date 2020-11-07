@@ -1,0 +1,91 @@
+I"�<p><img src="/images/aqara-relay-part1/relay_fon.png" alt="_config.yml" /> 
+Исследуемое устройство состоит из двух плат. Назову их “плата с контроллером” и “плата с реле”. Эта статья будет посвящена первой плате.</p>
+
+<p>Я планирую цикл статей по реверс-инжинирингу обозначенного устройства. План следующий:</p>
+<ol>
+  <li><a href="/aqara_relay_mcu/">Восстановление схемы платы с контроллером;</a></li>
+  <li>Восстановление схемы платы с реле;</li>
+  <li>Исследование девайса со стороны zigbee (ep, кластера и т.п.);</li>
+  <li>Извлечение прошивки из JN5169;</li>
+  <li>Исследование измерительной микросхемы PL7211;</li>
+</ol>
+
+<h3 id="стек-слоёв">Стек слоёв</h3>
+
+<p>Плата состоит из 4 слоёв. Толщина платы 0.8 мм. Ниже представлены сканы каждого слоя расположенных “на просвет” (слой bottom отзеркален). Изображения слоёв с компонентами (<a href="#lay0">первое</a> и <a href="#lay7">последнее</a> фото) получены на плате с другой датой производства, но ревизия та же.</p>
+
+<ul>
+  <li><a href="#lay0">Top components</a>;</li>
+  <li><a href="#lay1">Top mask, silk</a>;</li>
+  <li><a href="#lay2">Top</a>;</li>
+  <li><a href="#lay3">Int 1</a>;</li>
+  <li><a href="#lay4">Int 2</a>;</li>
+  <li><a href="#lay5">Bottom</a>;</li>
+  <li><a href="#lay6">Bottom mask</a>;</li>
+  <li><a href="#lay7">Bottom components</a>;
+<a name="lay0"></a></li>
+</ul>
+
+<p><a href="/images/aqara-relay-part1/layer/0_top_comp.jpg"><img src="/images/aqara-relay-part1/layer/0_top_comp.jpg" alt="_config.yml" /></a> Top components.
+<a name="lay1"></a></p>
+
+<hr />
+
+<p><a href="/images/aqara-relay-part1/layer/1_top_mask_silk.jpg"><img src="/images/aqara-relay-part1/layer/1_top_mask_silk.jpg" alt="_config.yml" /></a> Top mask, silk.
+<a name="lay2"></a></p>
+
+<hr />
+
+<p><a href="/images/aqara-relay-part1/layer/2_top.jpg"><img src="/images/aqara-relay-part1/layer/2_top.jpg" alt="_config.yml" /></a> Top.
+<a name="lay3"></a></p>
+
+<hr />
+
+<p><a href="/images/aqara-relay-part1/layer/3_int2.jpg"><img src="/images/aqara-relay-part1/layer/3_int2.jpg" alt="_config.yml" /></a> Int 1.
+<a name="lay4"></a></p>
+
+<hr />
+
+<p><a href="/images/aqara-relay-part1/layer/4_Int3.jpg"><img src="/images/aqara-relay-part1/layer/4_Int3.jpg" alt="_config.yml" /></a> Int 2.
+<a name="lay5"></a></p>
+
+<hr />
+
+<p><a href="/images/aqara-relay-part1/layer/5_bot.jpg"><img src="/images/aqara-relay-part1/layer/5_bot.jpg" alt="_config.yml" /></a> Bottom.
+<a name="lay6"></a></p>
+
+<hr />
+
+<p><a href="/images/aqara-relay-part1/layer/6_bot_mask_silk.jpg"><img src="/images/aqara-relay-part1/layer/6_bot_mask_silk.jpg" alt="_config.yml" /></a> Bottom mask.
+<a name="lay7"></a></p>
+
+<hr />
+
+<p><a href="/images/aqara-relay-part1/layer/7_bot_comp.jpg"><img src="/images/aqara-relay-part1/layer/7_bot_comp.jpg" alt="_config.yml" /></a> Bottom components.</p>
+
+<h3 id="схема">Схема</h3>
+
+<p>Номиналы компонентов измерены прибором <a href="https://www.smarttweezers.com/colibri-pro-specs/">Smart Tweezers Bluetooth ST5S-BT</a>.</p>
+
+<p><a href="/images/aqara-relay-part1/aqara_relay_mcu_sch1.pdf">В формате pdf</a>
+<a href="/images/aqara-relay-part1/aqara_relay_mcu_sch1.png"><img src="/images/aqara-relay-part1/aqara_relay_mcu_sch1.png" alt="_config.yml" /></a>
+Схема.</p>
+
+<hr />
+
+<p><a href="/images/aqara-relay-part1/top_pos.png"><img src="/images/aqara-relay-part1/top_pos.png" alt="_config.yml" /></a>
+Сторона top.</p>
+
+<hr />
+
+<p><a href="/images/aqara-relay-part1/bot_pos.png"><img src="/images/aqara-relay-part1/bot_pos.png" alt="_config.yml" /></a>
+Сторона bottom.</p>
+<h3 id="остальная-документация">Остальная документация</h3>
+<ul>
+  <li><a href="/images/aqara-relay-part1/aqara_relay_mcu1.zip">Gerber;</a></li>
+  <li><a href="/images/aqara-relay-part1/bom_aqara_relay_mcu1.pdf">BOM;</a></li>
+  <li><a href="/images/aqara-relay-part1/aqara-relay-part1_all.zip">Все файлы одним архивом;</a></li>
+</ul>
+
+<p>Основная задача - это восстановление схемы. Восстановление трассировки платы выполнялось в оставшееся время и до какого-то разумного предела. Работоспособность в железе я не проверял. Учитывайте это если вдруг вы решите повторить устройство.</p>
+:ET

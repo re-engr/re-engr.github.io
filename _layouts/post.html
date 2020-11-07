@@ -1,0 +1,17 @@
+---
+layout: default
+---
+
+<article class="post">
+  <h2>{{ page.title }}</h2>
+
+  <div class="entry">
+    {{ content }}
+  </div>
+
+  <div class="date" style="text-align: right;">
+    {{ page.date | date: "%e.%m.%Y" }}
+  </div>
+
+  {% include disqus.html %}
+</article>
