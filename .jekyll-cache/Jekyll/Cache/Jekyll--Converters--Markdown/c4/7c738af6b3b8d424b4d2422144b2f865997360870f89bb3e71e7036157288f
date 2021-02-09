@@ -1,0 +1,91 @@
+I"|<p><img src="/images/aqara-relay-part2/relay_fon_ii.png" alt="_config.yml" /> 
+Продолжение исследования устройства Aqara реле…</p>
+
+<p>План работ остается прежним:</p>
+<ol>
+  <li><a href="/aqara_relay_mcu/">Восстановление схемы платы с контроллером;</a></li>
+  <li><a href="/aqara_relay_pwr/">Восстановление схемы платы с реле;</a></li>
+  <li>Исследование девайса со стороны zigbee (ep, кластера и т.п.);</li>
+  <li>Извлечение прошивки из JN5169;</li>
+  <li>Исследование измерительной микросхемы PL7211;</li>
+</ol>
+
+<h3 id="новые-возможности">Новые возможности</h3>
+<p>Восстанавливая схему, обнаружил несколько интересных особенностей устройства о которых ранее не знал.</p>
+<ol>
+  <li>Широкий диапазон питающего напряжение (от 15 вольт). Я провел эксперименты с 24х вольтовым источником постоянного тока. 
+  N - плюс, L - общий. Устройство уверенно запускается. Вторичные напряжения составляют 5.2В и 3.3В. В момент переключения реле (для поляризованного реле это единственный момент для потребления тока) нет провала вторичных напряжений.</li>
+</ol>
+
+<h3 id="стек-слоёв">Стек слоёв</h3>
+
+<p>Плата двухслойная. Толщина платы 1.5 мм. Ниже представлены сканы каждого слоя расположенных “на просвет” (слой bottom отзеркален).</p>
+
+<ul>
+  <li><a href="#lay0">Top components</a>;</li>
+  <li><a href="#lay1">Top mask, silk</a>;</li>
+  <li><a href="#lay2">Top</a>;</li>
+  <li><a href="#lay3">Bottom</a>;</li>
+  <li><a href="#lay4">Bottom mask</a>;</li>
+  <li><a href="#lay5">Bottom components</a>;
+<a name="lay0"></a></li>
+</ul>
+
+<p><a href="/images/aqara-relay-part2/layer/0_top_comp.jpg"><img src="/images/aqara-relay-part2/layer/0_top_comp.jpg" alt="_config.yml" /></a> Top components.
+<a name="lay1"></a></p>
+
+<hr />
+
+<p><a href="/images/aqara-relay-part2/layer/1_top_silk.jpg"><img src="/images/aqara-relay-part2/layer/1_top_silk.jpg" alt="_config.yml" /></a> Top mask, silk.
+<a name="lay2"></a></p>
+
+<hr />
+
+<p><a href="/images/aqara-relay-part2/layer/2_top_cup.jpg"><img src="/images/aqara-relay-part2/layer/2_top_cup.jpg" alt="_config.yml" /></a> Top.
+<a name="lay3"></a></p>
+
+<hr />
+
+<p><a href="/images/aqara-relay-part2/layer/3_bot_cup.jpg"><img src="/images/aqara-relay-part2/layer/3_bot_cup.jpg" alt="_config.yml" /></a> Bottom.
+<a name="lay4"></a></p>
+
+<hr />
+
+<p><a href="/images/aqara-relay-part2/layer/4_bot_silk.jpg"><img src="/images/aqara-relay-part2/layer/4_bot_silk.jpg" alt="_config.yml" /></a> Bottom mask, silk.
+<a name="lay5"></a></p>
+
+<hr />
+
+<p><a href="/images/aqara-relay-part2/layer/5_bot_comp.jpg"><img src="/images/aqara-relay-part2/layer/5_bot_comp.jpg" alt="_config.yml" /></a> Bottom components.
+<a name="lay6"></a></p>
+
+<h3 id="схема">Схема</h3>
+
+<p><a href="/images/aqara-relay-part2/aqara_relay_sch_pwr_v1.pdf">В формате pdf</a>
+<a href="/images/aqara-relay-part2/aqara_relay_sch_pwr_v1.png"><img src="/images/aqara-relay-part2/aqara_relay_sch_pwr_v1.jpg" alt="_config.yml" /></a>
+Схема.</p>
+
+<hr />
+
+<p><a href="/images/aqara-relay-part2/top_assembly.jpg"><img src="/images/aqara-relay-part2/top_assembly.jpg" alt="_config.yml" /></a>
+Сторона top.</p>
+
+<hr />
+
+<p><a href="/images/aqara-relay-part2/bot_assembly.jpg"><img src="/images/aqara-relay-part2/bot_assembly.jpg" alt="_config.yml" /></a>
+Сторона bottom.</p>
+<h3 id="остальная-документация">Остальная документация</h3>
+<ul>
+  <li><a href="/images/aqara-relay-part2/aqara_pwr_gerber.zip">Gerber;</a></li>
+  <li><a href="/images/aqara-relay-part2/bom_aqara_relay_pwr1.pdf">BOM;</a></li>
+  <li><a href="/images/aqara-relay-part2/aqara-relay-part2_all.zip">Все файлы одним архивом;</a></li>
+</ul>
+
+<p><a href="/images/aqara-relay-part2/top_3d.jpg"><img src="/images/aqara-relay-part2/top_3d.jpg" alt="_config.yml" /></a>
+Сторона top.</p>
+
+<hr />
+
+<p><a href="/images/aqara-relay-part2/bot_3d.jpg"><img src="/images/aqara-relay-part2/bot_3d.jpg" alt="_config.yml" /></a>
+Сторона bottom.</p>
+:ET
