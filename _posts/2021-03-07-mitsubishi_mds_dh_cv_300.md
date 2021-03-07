@@ -16,11 +16,11 @@ title: Ремонт Mitsubishi MDS-DH-CV-300
 
 Устройство состоит из платы управления и силовой части. Межплатное соединение осуществляется шлейфом. 
 ![_config.yml]({{ site.baseurl }}/images/mitsubishi_mds_dh_cv_300/mitsu_0.JPG)
-![_config.yml]({{ site.baseurl }}/images/mitsubishi_mds_dh_cv_300/mitsu_1.jpg)
+![_config.yml]({{ site.baseurl }}/images/mitsubishi_mds_dh_cv_300/mitsu_1.JPG)
 
 В качестве управляющего контроллера используется TMS320F240. Анализ сигналов на шлейфе и тщательный осмотр силовой части дали понять что внимание надо сконцентрировать на плате управления (RK415D BN638A309G51).
-![_config.yml]({{ site.baseurl }}/images/mitsubishi_mds_dh_cv_300/mitsu_cpu_a.jpg)
-![_config.yml]({{ site.baseurl }}/images/mitsubishi_mds_dh_cv_300/mitsu_cpu_b.jpg)
+![_config.yml]({{ site.baseurl }}/images/mitsubishi_mds_dh_cv_300/mitsu_cpu_a.JPG)
+![_config.yml]({{ site.baseurl }}/images/mitsubishi_mds_dh_cv_300/mitsu_cpu_b.JPG)
 
 
 ## Поиск проблемы 
@@ -56,9 +56,9 @@ title: Ремонт Mitsubishi MDS-DH-CV-300
 
 Я же работал с [SDSP-PP](http://www.elkos.com.ua/setdsp/sdsppp.html). Является клоном XDS510PP.  
 
-![_config.yml]({{ site.baseurl }}/images/mitsubishi_mds_dh_cv_300/xds510_a.jpg)
-![_config.yml]({{ site.baseurl }}/images/mitsubishi_mds_dh_cv_300/xds510_b.jpg)
-![_config.yml]({{ site.baseurl }}/images/mitsubishi_mds_dh_cv_300/xds510_c.jpg)
+![_config.yml]({{ site.baseurl }}/images/mitsubishi_mds_dh_cv_300/xds510_a.JPG)
+![_config.yml]({{ site.baseurl }}/images/mitsubishi_mds_dh_cv_300/xds510_b.JPG)
+![_config.yml]({{ site.baseurl }}/images/mitsubishi_mds_dh_cv_300/xds510_c.JPG)
 ![_config.yml]({{ site.baseurl }}/images/mitsubishi_mds_dh_cv_300/xds510_bot.jpg)
 ![_config.yml]({{ site.baseurl }}/images/mitsubishi_mds_dh_cv_300/xds510_top.jpg)
 ![_config.yml]({{ site.baseurl }}/images/mitsubishi_mds_dh_cv_300/xds510_schild.jpg)
