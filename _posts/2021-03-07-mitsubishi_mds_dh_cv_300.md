@@ -54,7 +54,8 @@ title: Ремонт Mitsubishi MDS-DH-CV-300
 
 Есть предложения от компании Sauris, в частности [SAU-XDS510-USB Lite](http://sauris.de/ru/zagruzki/?SECTION_ID=95&ELEMENT_ID=417). Без проблем эмулятор добавляется в CSS и через него считывается прошивка, но для записи F240 нужно самостоятельно написать драйвер. Утилита sauflash содержит документацию как это сделать, в поставке есть несколько примеров для других процессоров. 
 
-Я же работал с [SDSP-PP](http://www.elkos.com.ua/setdsp/sdsppp.html). Является клоном XDS510PP.
+Я же работал с [SDSP-PP](http://www.elkos.com.ua/setdsp/sdsppp.html). Является клоном XDS510PP.  
+
 ![_config.yml]({{ site.baseurl }}/images/mitsubishi_mds_dh_cv_300/xds510_a.jpg)
 ![_config.yml]({{ site.baseurl }}/images/mitsubishi_mds_dh_cv_300/xds510_b.jpg)
 ![_config.yml]({{ site.baseurl }}/images/mitsubishi_mds_dh_cv_300/xds510_c.jpg)
