@@ -1,0 +1,82 @@
+I"d<p><img src="/images/jn5169_lockbit/5169_logo.jpg" alt="_config.yml" /><br />
+Два способа прочитать залоченный JN5169.</p>
+<h4 id="эта-статья-носит-образовательный-характер">Эта статья носит образовательный характер.</h4>
+
+<p>Помимо получения новых знаний, я воспользовался этими методами что бы починить свои, вышедшие из строя, реле и привод штор.</p>
+
+<p>Для ZigBee устройств, построенных на чипах  JN5169, характерны программные сбои, которые невозможно решить перезагрузкой или удерживанием кнопки.<br />
+В датчиках от Heiman - это “окирпичивие” при установке неккоректных интервалов репортинга. Но у них чип открыт, по этому эта проблема решается простым стиранием PDM через bootloader.<br />
+У Xiaomi/Aqara устройство теряет работоспособность при попытке переподключить его к ZigBee сети. Происходит это редко и на первых версиях прошивок, но все равно есть шанс столкнуться с этим. Особенно неприятно если это случается с не дешевым приводом штор.</p>
+
+<p>Другая сторона этой статьи - показать уязвимость некоторых ZigBee-систем. Но на эту тему я пофантазирую в конце статьи, когда вы прочтете материал и поймете суть. И так.</p>
+
+<h4 id="1-bootloader">1. Bootloader</h4>
+
+<h4 id="2-программное-обеспечение">2. Программное обеспечение</h4>
+<ol>
+  <li><a href="http://www.ti.com/lit/zip/swrc212">Драйвер для CC-Debuger и СС2531 Sniffer;</a></li>
+  <li><a href="http://www.ti.com/tool/flash-programmer">Программа для работы с CC-Debuger;</a></li>
+  <li><a href="http://www.ti.com/tool/packet-sniffer">Прошивка для CC2531 (входит в состав Packet Sniffer, старая версия);</a></li>
+  <li><a href="http://www.ti.com/tool/timac">Программа для связи железа с Wireshark (TiWsPc);</a></li>
+  <li><a href="https://www.wireshark.org/">Wireshark;</a></li>
+</ol>
+
+<h4 id="3-прошивка">3. Прошивка</h4>
+<p>Устанавливаем все вышеперечисленное. 
+Подключить CC2531 к CC-Debuger, подать питание на плату. Если все сделано правильно, 
+то нажатие на кнопку RESET, на программаторе, приведет к включению зеленого светодиода расположенного рядом с кнопкой. 
+Далее:
+Запустить <em>\Texas Instruments\SmartRF Tools\Flash Programmer\bin\SmartRFProg.exe</em>
+Выбрать файл прошивки <em>\Texas Instruments\SmartRF Tools\Packet Sniffer\bin\general\firmware\sniffer_fw_cc2531.hex</em>
+В поле Actions выбрать Erase, program and verify, нажать кнопку Perform actions;
+Если чип правильно определяется программатором и в ПО, но при прошивке вылазит ошибка, то попробуйте в начале выполнить действие Erase и после этого пункт 3. 
+Драйвер на новое устройство, CC2531 Sniffer, устанавливается из той же папки что и драйвер для CC-Debuger.</p>
+
+<h4 id="4-tiwspc">4. TiWsPc</h4>
+<p>Программа создает pipe для трансляции данных от CC2531 в Wireshark.
+Запустить TiWsPc.exe. Нажать Device Configuration. Должно быть такое окно</p>
+
+<p><img src="/images/zigbee-shiffer/tis1.png" alt="_config.yml" /></p>
+
+<p>В поле Configuration выбирается номер канала для прослушивания. Для примера 11.
+Нажать Start. Run на зеленом фоне говорит об успехе. Окно конфигурации можно закрыть. В основном окне нам понадобится строка \.\pipe\tiwspc_data , позже её нужно будет внести в настройки Wireshark.</p>
+
+<h4 id="5-настройка-wireshark">5. Настройка Wireshark</h4>
+
+<p>Запускаем Wireshark.exe. Переходим в Edit / Preferences… / Protocols / ZigBee / Edit / 
+В поле Security Level выбрать AES-128, 32 bit
+Нажать кнопку + и внести ключ <strong>5A:69:67:42:65:65:41:6C:6C:69:61:6E:63:65:30:39</strong>
+Сохранить все изменения.</p>
+
+<p><img src="/images/zigbee-shiffer/z_key.png" alt="_config.yml" /></p>
+
+<p>Это стандартный ключ, в некоторых случаях могут быть другие.</p>
+
+<p>С главного окна Wireshark переходим Capture / Options… / Manage Interfaces… /  Pipes 
+Нажать кнопку +. Будет создан канал с названием New Pipe. Переименовать его в <em>\.\pipe\tiwspc_data</em> (из TiWsPc). Сохранить изменения и перейти в главное окно.</p>
+
+<p><img src="/images/zigbee-shiffer/p1.png" alt="_config.yml" /></p>
+
+<p>В качестве объекта захвата (Capture) выбрать созданный pipe и нажать старт (Ctrl+E).
+Устройство готово к работе.</p>
+
+<h4 id="6-общая-информация">6. Общая информация</h4>
+
+<p>В окне вывода Wireshark ничего не будет если на выбранном канале (TiWsPc) нет активности.</p>
+
+<p>Помимо стандартного ключа, внесенного в Wireshark, есть ещё один ключ который выдается устройствам при подключении к координатору. (чаще всего так, но могут быть варианты) Wireshark умеет самостоятельно перехватывать этот ключ и применять его для расшифровки последующих сообщений. После перезапуска Wireshark перехваченный ключ будет утерян, так его лучше сохранить в случае длительной работы с созданной сетью.</p>
+
+<p>Пример вывода</p>
+
+<p><img src="/images/zigbee-shiffer/log1.png" alt="_config.yml" /></p>
+
+<p>На тему настройки Wireshark есть видео от Freescale.</p>
+
+<p>После перезапуска Wireshark необходимо заново добавлять pipe. Ключ добавлять не нужно, он сохраняется. 
+Либо можно запускать Wireshark так (взято из документа \Texas Instruments\TiWsPc\ReadMe.rtf):</p>
+
+<p><em>2b. Start Wireshark with a modified shortcut that specifies the pipe.
+<strong>“C:&lt;your path here&gt;\wireshark.exe” -i\.\pipe\tiwspc_data -k</strong>
+You must include the -i and -k options
+This is the preferred way to use a pipe with Wireshark.</em></p>
+:ET
