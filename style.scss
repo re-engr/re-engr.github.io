@@ -136,6 +136,36 @@ img {
   background: $lightGray;
 }
 
+.no-border {
+  border: none;
+  border-collapse: collapse;
+}
+
+// table more, date
+.no-border {
+  border: none;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.no-border td {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.left-align {
+  text-align: left;
+  width: 50%;
+}
+
+.right-align {
+  text-align: right;
+  width: 50%;
+}
+
 // Nicolas Gallagher's micro clearfix hack
 // http://nicolasgallagher.com/micro-clearfix-hack/
 .clearfix:before,
